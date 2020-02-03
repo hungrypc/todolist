@@ -33,12 +33,12 @@ export const signOut = () => {
     };
 };
 
-export const fetchTodo = (uid, dayStart, dayEnd) => {
+export const fetchTodos = (monthStart, monthEnd) => {
     return async (dispatch) => {
         await db
-            .collection(uid)
-            .where('date', ">=", dayStart)
-            .where('date', "<=", dayEnd)
+            .collection(firebase.auth().currentUser.uid)
+            .where('date', ">=", monthStart)
+            .where('date', "<=", monthEnd)
             .get()
             .then(doc => {
                 let todoArr = [];

@@ -42,7 +42,7 @@ const App = (props) => {
   } else if (!props.isSignedIn && !props.user) {
     return <Auth />
   } else if (props.isSignedIn && props.user) {
-    return <Main signOut={props.signOut}/>
+    return <Main signOut={props.signOut} user={props.user}/>
   } else {
     return <div>something went wrong</div>
   }

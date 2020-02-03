@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from 'antd/lib/menu';
 import Icon from 'antd/lib/icon';
+import Badge from 'antd/lib/badge'
 
 const { SubMenu } = Menu;
 
@@ -14,7 +15,7 @@ const Nav = (props) => {
         <div className="nav">
             <div className="logo nav__user">
                 <div className="nav__user-dp">
-                    <img src={props.dp} alt="user photo" className="nav__user-dp-img"></img>
+                    <img src={props.dp} alt="user" className="nav__user-dp-img"></img>
                 </div>
                 <div className="nav__user-name">{props.displayName}</div>
             </div>
@@ -35,9 +36,18 @@ const Nav = (props) => {
                         </span>
                     }
                 >
-                    <Menu.Item key="1">Option 1</Menu.Item>
-                    <Menu.Item key="2">Option 2</Menu.Item>
-                    <Menu.Item key="3">Option 3</Menu.Item>
+                    <Menu.Item key="1">
+                        <Badge status="default" text="All" />
+                    </Menu.Item>
+                    <Menu.Item key="2">
+                        <Badge status="success" text="Tag 1" />
+                    </Menu.Item>
+                    <Menu.Item key="3">
+                        <Badge status="warning" text="Tag 2" />
+                    </Menu.Item>
+                    <Menu.Item key="4">
+                        <Badge status="error" text="Tag 3" />
+                    </Menu.Item>
                 </SubMenu>
                 <SubMenu
                     key="sub2"

@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
+
 import Layout from 'antd/lib/layout';
 
 import Nav from './Nav';
+import Calendar from './Calendar';
+
+import { selectDate, fetchTodos } from '../actions';
 
 
 const { Content, Footer, Sider } = Layout;
 
 const Main = (props) => {
 
-    const [collapsed, setCollapsed] = useState(false);
+    const today = new Date(props.date)
+    const monthStart = new Date(today.getFullYear(), today.getMonth(), 1)
+    const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
-    const onCollapse = col => {
-        console.log(collapsed);
-        setCollapsed(col);
-    };
+    const getDate = selectedDate => {
+        props.selectDate(selectedDate)
+        console.log(monthStart, monthEnd)
+    }
+
+    useEffect(() => {
+        props.fetchTodos(monthStart, monthEnd)
+    }, [props.date])
 
     return (
         <div className="main">
             <Layout>
-                <Sider className="main__sider" theme="light" collapsible collapsed={collapsed} onCollapse={onCollapse}>
+                <Sider className="main__sider" theme="light">
                     <Nav displayName={props.user.displayName} dp={props.user.photoURL} signOut={props.signOut} />
                 </Sider>
                 <Layout className="main__layout">
                     <Content className="main__content">
                         <div className="main__content-container">
-                            main
+                            <Calendar calDate={moment(props.date)} getDate={getDate} todos={props.todo} monthStart={monthStart} monthEnd={monthEnd}/>
                         </div>
                     </Content>
                     <Footer className="main__footer">made by: Phil Chan</Footer>
@@ -36,7 +47,13 @@ const Main = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    return { user: state.auth.user }
+    return { 
+        date: state.todo.date,
+        todo: state.todo.list 
+    }
 }
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, {
+    selectDate,
+    fetchTodos
+})(Main);

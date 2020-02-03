@@ -1,8 +1,9 @@
 import { FETCH_TODOS, CREATE_TODO, SELECT_DATE } from '../actions/types';
+import moment from 'moment';
 
 const INITIAL_STATE = {
-    list: {},
-    date: new Date().setHours(0, 0, 0, 0)
+    list: [],
+    date: moment(new Date().setHours(0, 0, 0, 0))
 };
 
 export default (state = INITIAL_STATE, action) => {
