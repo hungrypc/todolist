@@ -5,6 +5,7 @@ import {
     SIGN_IN,
     SIGN_OUT,
     FETCH_TODOS,
+    ORGANIZE_TODO,
     CREATE_TODO,
     SELECT_DATE
 } from './types';
@@ -50,6 +51,22 @@ export const fetchTodos = (monthStart, monthEnd) => {
             });
     };
 };
+
+export const orgListByDay = list => {
+    let todoMap = {};
+    for (const todo of list) {
+        let date = new Date(todo.date.seconds * 1000)
+        if (todoMap[date]) {
+            todoMap[date] = [...todoMap[date], todo];
+        } else {
+            todoMap[date] = [todo]
+        }
+    }
+    return {
+        type: ORGANIZE_TODO,
+        payload: todoMap
+    }
+}
 
 export const createTodo = (obj) => {
     db.collection(firebase.auth().currentUser.uid).add(obj);

@@ -15,14 +15,14 @@ const { Content, Footer, Sider } = Layout;
 const Main = (props) => {
 
     const today = new Date(props.date)
-    const monthStart = new Date(today.getFullYear(), today.getMonth(), 1)
-    const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const monthStart = new Date(today.getFullYear(), today.getMonth(), -11) // -11 b/c calendar can display days from month before
+    const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 11); // 11 b.c calendar can display days from month after
 
     const getDate = selectedDate => {
         props.selectDate(selectedDate)
-        console.log(monthStart, monthEnd)
     }
 
+    // FIX DATE SELECT VS MONTH SELECT HERE
     useEffect(() => {
         props.fetchTodos(monthStart, monthEnd)
     }, [props.date])
@@ -39,7 +39,7 @@ const Main = (props) => {
                             <Calendar calDate={moment(props.date)} getDate={getDate} todos={props.todo} monthStart={monthStart} monthEnd={monthEnd}/>
                         </div>
                     </Content>
-                    <Footer className="main__footer">made by: Phil Chan</Footer>
+                    <Footer className="main__footer">Made by: Phil Chan</Footer>
                 </Layout>
             </Layout>
         </div>
