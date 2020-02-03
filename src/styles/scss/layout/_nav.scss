@@ -1,0 +1,34 @@
+.nav {
+    &__user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // height: 3rem;
+        margin: 7rem auto 7rem auto;
+
+        &-dp {
+            display: block;
+            height: 70px;
+            width: 70px;
+            border: 1px solid #eee;
+            border-radius: 50%;
+            margin-bottom: 3.2rem;
+            overflow: hidden;
+
+            &-img {
+                height: 100%;
+                background-size: cover;
+            }
+        }
+
+        &-name {
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+        }  
+    }
+
+    &__menu {
+        width: 256;
+    }
+}

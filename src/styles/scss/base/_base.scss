@@ -1,0 +1,18 @@
+/* this allows us to start clean */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+/* set root size so i can use rem */
+/* use 62.5% based on user's default font size (usually 16px), 62.5% of 16 is 10 */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
