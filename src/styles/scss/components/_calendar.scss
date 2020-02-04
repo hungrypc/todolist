@@ -25,12 +25,52 @@
     &__list-container {
 
         &-todos {
-            height: 200px;
+            height: 230px;
             overflow: scroll;
         }
     }
+
+    &__drawer-description {
+        height: 10rem;
+        width: 21rem;
+        padding: 1.2rem;
+        border: 1px solid #e8e8e8;
+        border-radius: 5px;
+        margin-top: .5rem;
+        color: #8c8c8c;
+    }
+    &__drawer-checkbox {
+        width: 21rem;
+        margin-top: 2rem;
+    }
 }
 
-.ant-modal-content {
-    overflow: hidden;
+.drawer-notes {
+    font-size: 1.3rem;
+    color: #bfbfbf;
+    margin-left: .5rem;
 }
+
+.ant-modal {
+    width: 400px !important;
+
+    &-content {
+    overflow: hidden;
+
+    }
+    &-body {
+        padding: 24px 0; 
+    }
+}
+
+.ant-badge {
+    &-status-dot {
+        height: 8px;
+        width: 8px;
+    }
+
+    &-status-text {
+        font-size: 1.4rem;
+    }
+}
+

@@ -7,7 +7,8 @@ import {
     FETCH_TODOS,
     ORGANIZE_TODO,
     CREATE_TODO,
-    SELECT_DATE
+    SELECT_DATE,
+    CHANGE_STATUS
 } from './types';
 
 firebase.initializeApp({
@@ -43,7 +44,9 @@ export const fetchTodos = (monthStart, monthEnd) => {
             .get()
             .then(doc => {
                 let todoArr = [];
-                doc.forEach(todo => todoArr.push(todo.data()))
+                doc.forEach((todo) => {
+                    todoArr.push(Object.assign(todo.data(), {id: todo.id}))
+                })
                 dispatch({
                     type: FETCH_TODOS,
                     payload: todoArr
@@ -77,9 +80,17 @@ export const createTodo = (obj) => {
 
 export const selectDate = (date) => {
     let response = new Date(date);
-    response.setHours(0,0,0,0);
+    response.setHours(0, 0, 0, 0);
     return {
         type: SELECT_DATE,
         payload: response
+    }
+};
+
+export const changeStatus = (todo) => {
+    let docRef = db.collection(firebase.auth().currentUser.uid).doc(todo.id)
+    docRef.update({ pending: !todo.pending });
+    return {
+        type: CHANGE_STATUS
     }
 };

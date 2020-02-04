@@ -39,7 +39,7 @@ const Main = (props) => {
                             <Calendar calDate={moment(props.date)} getDate={getDate} todos={props.todo} monthStart={monthStart} monthEnd={monthEnd}/>
                         </div>
                     </Content>
-                    <Footer className="main__footer">Made by: Phil Chan</Footer>
+                    <Footer className="main__footer"></Footer>
                 </Layout>
             </Layout>
         </div>

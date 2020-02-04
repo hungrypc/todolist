@@ -41,26 +41,93 @@ body {
     font-size: 28px; }
 
 .todo-calendar__list-container-todos {
-  height: 200px;
+  height: 230px;
   overflow: scroll; }
 
-.ant-modal-content {
-  overflow: hidden; }
+.todo-calendar__drawer-description {
+  height: 10rem;
+  width: 21rem;
+  padding: 1.2rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  margin-top: .5rem;
+  color: #8c8c8c; }
+
+.todo-calendar__drawer-checkbox {
+  width: 21rem;
+  margin-top: 2rem; }
+
+.drawer-notes {
+  font-size: 1.3rem;
+  color: #bfbfbf;
+  margin-left: .5rem; }
+
+.ant-modal {
+  width: 400px !important; }
+  .ant-modal-content {
+    overflow: hidden; }
+  .ant-modal-body {
+    padding: 24px 0; }
+
+.ant-badge-status-dot {
+  height: 8px;
+  width: 8px; }
+
+.ant-badge-status-text {
+  font-size: 1.4rem; }
 
 .todo-item {
   display: block;
   height: 4rem;
   width: 30rem;
-  margin: 1rem 0;
+  margin: 1rem auto;
   padding: 1rem;
-  border: 1px solid #eee;
   border-radius: 5px;
+  text-align: left;
   cursor: pointer; }
+  .todo-item .ant-badge-status-text {
+    margin-left: 2rem; }
   .todo-item:last-child {
     margin-bottom: 10rem; }
+  .todo-item--complete .ant-badge-status-text {
+    color: #bfbfbf; }
+  .todo-item-checkbox {
+    float: right;
+    z-index: 9999; }
+
+.ant-drawer-title .ant-badge-status-text {
+  margin-left: 2rem;
+  font-size: 1.5rem; }
+
+.ant-drawer-body {
+  padding: 1rem 2.4rem; }
+
+.pending {
+  border: 1px solid #e8e8e8; }
 
 .add-item {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 4rem; }
+  .add-item-break {
+    width: 30rem;
+    text-align: center;
+    font-size: 2rem;
+    color: #bfbfbf; }
+
+.completed {
+  position: relative;
+  width: 30rem;
+  border: 1px solid #e8e8e8; }
+  .completed:first-child {
+    margin-top: 4rem; }
+    .completed:first-child:before {
+      content: '';
+      position: absolute;
+      background-color: #e8e8e8;
+      height: 1px;
+      width: 35%;
+      top: -2rem;
+      left: 9.7rem; }
 
 .radio-tag-success .ant-radio .ant-radio-inner {
   border-color: #52c41a; }

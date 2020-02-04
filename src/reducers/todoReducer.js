@@ -1,4 +1,4 @@
-import { FETCH_TODOS, ORGANIZE_TODO, CREATE_TODO, SELECT_DATE } from '../actions/types';
+import { FETCH_TODOS, ORGANIZE_TODO, CREATE_TODO, SELECT_DATE, CHANGE_STATUS } from '../actions/types';
 import moment from 'moment';
 
 const INITIAL_STATE = {
@@ -10,13 +10,15 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_TODOS:
-            return {...state, list: action.payload };
+            return { ...state, list: action.payload };
         case ORGANIZE_TODO:
-            return {...state, org: action.payload};
+            return { ...state, org: action.payload };
         case CREATE_TODO:
             return state;
         case SELECT_DATE:
-            return {...state, date: action.payload };
+            return { ...state, date: action.payload };
+        case CHANGE_STATUS:
+            return state;
         default:
             return state;
     }
