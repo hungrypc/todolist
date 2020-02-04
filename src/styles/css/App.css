@@ -54,9 +54,34 @@ body {
   margin: 1rem 0;
   padding: 1rem;
   border: 1px solid #eee;
-  border-radius: 5px; }
+  border-radius: 5px;
+  cursor: pointer; }
   .todo-item:last-child {
     margin-bottom: 10rem; }
+
+.add-item {
+  text-align: center; }
+
+.radio-tag-success .ant-radio .ant-radio-inner {
+  border-color: #52c41a; }
+  .radio-tag-success .ant-radio .ant-radio-inner::after {
+    background-color: #52c41a; }
+
+.radio-tag-warning .ant-radio .ant-radio-inner {
+  border-color: #faad14; }
+  .radio-tag-warning .ant-radio .ant-radio-inner::after {
+    background-color: #faad14; }
+
+.radio-tag-error .ant-radio .ant-radio-inner {
+  border-color: #f5222d; }
+  .radio-tag-error .ant-radio .ant-radio-inner::after {
+    background-color: #f5222d; }
+
+.ant-form-item {
+  margin-bottom: 0; }
+
+.form-button {
+  float: right; }
 
 .nav__user {
   display: flex;

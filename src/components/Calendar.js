@@ -7,6 +7,7 @@ import Badge from 'antd/lib/badge'
 import Modal from 'antd/lib/modal';
 import Drawer from 'antd/lib/drawer';
 
+import TodoForm from './TodoForm';
 import { orgListByDay } from '../actions';
 
 const CalendarView = (props) => {
@@ -19,16 +20,27 @@ const CalendarView = (props) => {
 
     // DRAWER
     const [drawerVisible, setDrawerVisible] = useState(false);
-    const showDrawer = () => {
+    const [todoItem, setTodoItem] = useState({});
+    const showDrawer = (todo) => {
+        setTodoItem(todo);
         setDrawerVisible(true);
     };
     const onClose = () => {
         setDrawerVisible(false);
     };
 
+    const [formDrawerVisible, setFormDrawerVisible] = useState(false);
+    const showForm = () => {
+        setFormDrawerVisible(true);
+    }
+
+    const onFormClose = () => {
+        setFormDrawerVisible(false);
+    }
 
 
     // CALENDAR
+
     useEffect(() => {
         props.orgListByDay(props.todos)
     }, [props.todos])
@@ -100,14 +112,15 @@ const CalendarView = (props) => {
                 <div className="todo-calendar__list-container">
                     <div className="todo-calendar__list-container-todos">
                         {getListData(props.calDate).map((todo) => (
-                            <div key={todo.title} className="todo-item" onClick={showDrawer}>
-                                {/* {todo.title} */}
+                            <div key={todo.title} className="todo-item" onClick={()=> showDrawer(todo)}>
                                 <Badge status={todo.type} text={todo.title} />
                             </div>
                         ))}
+                        <div className="todo-item add-item" onClick={showForm}>+</div>
                     </div>
                     <Drawer
-                        title="Basic Drawer"
+                        className="todo-calendar__drawer"
+                        title={<Badge status={todoItem.type} text={todoItem.title} />}
                         placement="right"
                         closable
                         onClose={onClose}
@@ -115,7 +128,19 @@ const CalendarView = (props) => {
                         getContainer={false}
                         style={{ position: 'absolute' }}
                     >
-                        <p>Some contents...</p>
+                        <p>{todoItem.description}</p>
+                    </Drawer>
+                    <Drawer
+                        className="todo-calendar__form"
+                        title="Add a todo item"
+                        placement="right"
+                        closable
+                        onClose={onFormClose}
+                        visible={formDrawerVisible}
+                        getContainer={false}
+                        style={{ position: 'absolute' }}
+                    >
+                        <TodoForm onFormClose={onFormClose} date={props.calDate} monthStart={props.monthStart} monthEnd={props.monthEnd}/>
                     </Drawer>
                 </div>
             </Modal>
