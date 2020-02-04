@@ -21,7 +21,8 @@ const Auth = () => {
     };
 
     return (
-        <div>
+        <div className="auth">
+            <div className="auth__header">Todo Calendar</div>
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
         </div>
     );
