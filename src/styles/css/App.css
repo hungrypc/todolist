@@ -40,6 +40,24 @@ body {
   .notes-month section {
     font-size: 28px; }
 
+.todo-calendar__list-container-todos {
+  height: 200px;
+  overflow: scroll; }
+
+.ant-modal-content {
+  overflow: hidden; }
+
+.todo-item {
+  display: block;
+  height: 4rem;
+  width: 30rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 5px; }
+  .todo-item:last-child {
+    margin-bottom: 10rem; }
+
 .nav__user {
   display: flex;
   flex-direction: column;

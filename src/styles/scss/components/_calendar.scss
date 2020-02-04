@@ -20,3 +20,17 @@
         font-size: 28px;
     }
 }
+
+.todo-calendar {
+    &__list-container {
+
+        &-todos {
+            height: 200px;
+            overflow: scroll;
+        }
+    }
+}
+
+.ant-modal-content {
+    overflow: hidden;
+}

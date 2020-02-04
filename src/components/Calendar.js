@@ -5,40 +5,33 @@ import moment from 'moment';
 import Calendar from 'antd/lib/calendar';
 import Badge from 'antd/lib/badge'
 import Modal from 'antd/lib/modal';
+import Drawer from 'antd/lib/drawer';
 
 import { orgListByDay } from '../actions';
 
 const CalendarView = (props) => {
 
     // MODAL
-
-    const [visible, setVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
     const handleCancel = () => {
-        setVisible(false);
-    }
+        setModalVisible(false);
+    };
+
+    // DRAWER
+    const [drawerVisible, setDrawerVisible] = useState(false);
+    const showDrawer = () => {
+        setDrawerVisible(true);
+    };
+    const onClose = () => {
+        setDrawerVisible(false);
+    };
+
 
 
     // CALENDAR
-
-    let todoMap = {};
-
-    // const orgListByDay = list => {
-    //     for (const todo of list) {
-    //         let date = new Date(todo.date.seconds * 1000)
-    //         if (todoMap[date]) {
-    //             todoMap[date] = [...todoMap[date], todo];
-    //         } else {
-    //             todoMap[date] = [todo]
-    //         }
-    //     }
-    // }
-    // orgListByDay(props.todos)
-
     useEffect(() => {
         props.orgListByDay(props.todos)
     }, [props.todos])
-
-
 
     function getListData(value) {
         let listData = [];
@@ -81,7 +74,7 @@ const CalendarView = (props) => {
 
     const onSelect = value => {
         props.getDate(value);
-        setVisible(true);
+        setModalVisible(true);
     }
 
     const onPanelChange = value => {
@@ -98,16 +91,33 @@ const CalendarView = (props) => {
                 onPanelChange={onPanelChange}
             />
             <Modal
-                visible={visible}
-                title="Title"
+                visible={modalVisible}
+                title={moment(props.calDate).format("dddd MMMM Do")}
                 onCancel={handleCancel}
                 footer={null}
+                centered
             >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+                <div className="todo-calendar__list-container">
+                    <div className="todo-calendar__list-container-todos">
+                        {getListData(props.calDate).map((todo) => (
+                            <div key={todo.title} className="todo-item" onClick={showDrawer}>
+                                {/* {todo.title} */}
+                                <Badge status={todo.type} text={todo.title} />
+                            </div>
+                        ))}
+                    </div>
+                    <Drawer
+                        title="Basic Drawer"
+                        placement="right"
+                        closable
+                        onClose={onClose}
+                        visible={drawerVisible}
+                        getContainer={false}
+                        style={{ position: 'absolute' }}
+                    >
+                        <p>Some contents...</p>
+                    </Drawer>
+                </div>
             </Modal>
         </div>
 

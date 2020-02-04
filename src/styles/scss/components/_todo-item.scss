@@ -1,0 +1,13 @@
+.todo-item {
+    display: block;
+    height: 4rem;
+    width: 30rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    
+    &:last-child {
+        margin-bottom: 10rem;
+    }
+}
