@@ -7,3 +7,5 @@ Development Challenge for North One
 npm i
 npm start
 ```
+
+note: need own firebase key
