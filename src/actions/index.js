@@ -8,7 +8,8 @@ import {
     ORGANIZE_TODO,
     CREATE_TODO,
     SELECT_DATE,
-    CHANGE_STATUS
+    CHANGE_STATUS,
+    SELECT_TAG
 } from './types';
 
 firebase.initializeApp({
@@ -92,5 +93,12 @@ export const changeStatus = (todo) => {
     docRef.update({ pending: !todo.pending });
     return {
         type: CHANGE_STATUS
+    }
+};
+
+export const selectTag = tag => {
+    return {
+        type: SELECT_TAG,
+        payload: tag
     }
 };

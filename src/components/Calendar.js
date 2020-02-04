@@ -15,12 +15,6 @@ import { orgListByDay, changeStatus, fetchTodos } from '../actions';
 
 const CalendarView = (props) => {
 
-    // MODAL
-    const [modalVisible, setModalVisible] = useState(false);
-    const handleCancel = () => {
-        setModalVisible(false);
-    };
-
     // DRAWER
     const [drawerVisible, setDrawerVisible] = useState(false);
     const [todoItem, setTodoItem] = useState({});
@@ -28,6 +22,7 @@ const CalendarView = (props) => {
         setTodoItem(todo);
         setDrawerVisible(true);
     };
+
     const onClose = () => {
         setDrawerVisible(false);
     };
@@ -41,6 +36,13 @@ const CalendarView = (props) => {
         setFormDrawerVisible(false);
     };
 
+    // MODAL
+    const [modalVisible, setModalVisible] = useState(false);
+    const handleCancel = () => {
+        setFormDrawerVisible(false);
+        setDrawerVisible(false);
+        setModalVisible(false);
+    };
 
     // CALENDAR
 
@@ -66,12 +68,21 @@ const CalendarView = (props) => {
                 {// eslint-disable-next-line 
                     listData.map((item) => {
                         if (item.pending) {
-                            return (
-                                <li key={item.title}>
-                                    <Badge status={item.type} text={item.title} />
-                                </li>
-                            )
+                            if (props.tag === "all") {
+                                return (
+                                    <li key={item.title}>
+                                        <Badge status={item.type} text={item.title} />
+                                    </li>
+                                )
+                            } else if (props.tag === item.type) {
+                                return (
+                                    <li key={item.title}>
+                                        <Badge status={item.type} text={item.title} />
+                                    </li>
+                                )
+                            }
                         }
+
                     })}
             </ul>
         );
@@ -141,7 +152,7 @@ const CalendarView = (props) => {
                                     return (
                                         <Button key={todo.id} className="todo-item pending" type="default" onClick={() => showDrawer(todo)}>
                                             <Badge status={todo.type} text={todo.title} />
-                                            <Checkbox onChange={()=> onCheckboxChange(todo)} className="todo-item-checkbox" />
+                                            <Checkbox onChange={() => onCheckboxChange(todo)} className="todo-item-checkbox" />
                                         </Button>
                                     )
                                 }
@@ -173,7 +184,7 @@ const CalendarView = (props) => {
                         <div className="drawer-notes">Notes:</div>
                         <div className="todo-calendar__drawer-description">{todoItem.description}</div>
                         <div className="todo-calendar__drawer-checkbox"><Checkbox onChange={() => onCheckboxChange(todoItem)} checked={toggleChecked(todoItem)} >Completed</Checkbox></div>
-                        
+
                     </Drawer>
                     <Drawer
                         className="todo-calendar__form"
@@ -196,7 +207,8 @@ const CalendarView = (props) => {
 
 const mapStateToProps = state => {
     return {
-        org: state.todo.org
+        org: state.todo.org,
+        tag: state.todo.tag
     }
 }
 

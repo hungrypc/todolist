@@ -88,7 +88,7 @@ body {
   .todo-item .ant-badge-status-text {
     margin-left: 2rem; }
   .todo-item:last-child {
-    margin-bottom: 10rem; }
+    margin-bottom: 5rem; }
   .todo-item--complete .ant-badge-status-text {
     color: #bfbfbf; }
   .todo-item-checkbox {

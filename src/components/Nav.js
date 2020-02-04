@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Menu from 'antd/lib/menu';
 import Icon from 'antd/lib/icon';
 import Badge from 'antd/lib/badge'
+
+import { selectTag } from '../actions';
 
 const { SubMenu } = Menu;
 
@@ -9,6 +13,7 @@ const Nav = (props) => {
 
     const handleClick = e => {
         console.log('click ', e);
+        props.selectTag(e.key);
     };
 
     return (
@@ -22,7 +27,7 @@ const Nav = (props) => {
             <Menu
                 onClick={handleClick}
                 className="nav__menu"
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={['all']}
                 defaultOpenKeys={['sub1']}
                 mode="inline"
             >
@@ -36,16 +41,16 @@ const Nav = (props) => {
                         </span>
                     }
                 >
-                    <Menu.Item key="1">
+                    <Menu.Item key="all">
                         <Badge status="default" text="All" />
                     </Menu.Item>
-                    <Menu.Item key="2">
+                    <Menu.Item key="success">
                         <Badge status="success" text="Tag 1" />
                     </Menu.Item>
-                    <Menu.Item key="3">
+                    <Menu.Item key="warning">
                         <Badge status="warning" text="Tag 2" />
                     </Menu.Item>
-                    <Menu.Item key="4">
+                    <Menu.Item key="error">
                         <Badge status="error" text="Tag 3" />
                     </Menu.Item>
                 </SubMenu>
@@ -68,4 +73,6 @@ const Nav = (props) => {
     );
 };
 
-export default Nav;
+export default connect(null, {
+    selectTag
+})(Nav);
