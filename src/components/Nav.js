@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Menu from 'antd/lib/menu';
 import Icon from 'antd/lib/icon';
-import Badge from 'antd/lib/badge'
+import Badge from 'antd/lib/badge';
+import Popover from 'antd/lib/popover';
 
-import { selectTag } from '../actions';
+import TagForm from './TagForm';
+
+import { selectTag, fetchTags, setTag, handlePopover } from '../actions';
 
 const { SubMenu } = Menu;
 
@@ -15,6 +18,10 @@ const Nav = (props) => {
         console.log('click ', e);
         props.selectTag(e.key);
     };
+
+    useEffect(() => {
+        props.fetchTags()
+    }, [])
 
     return (
         <div className="nav">
@@ -45,13 +52,22 @@ const Nav = (props) => {
                         <Badge status="default" text="All" />
                     </Menu.Item>
                     <Menu.Item key="success">
-                        <Badge status="success" text="Tag 1" />
+                        <Badge status="success" text={props.tags.success} />
+                        <Popover placement="right" content={<TagForm />} trigger="click" visible={props.popover.success} onVisibleChange={() => props.handlePopover('success', props.popover.success)}>
+                            <Icon type="edit" className="tag-edit" />
+                        </Popover>
                     </Menu.Item>
                     <Menu.Item key="warning">
-                        <Badge status="warning" text="Tag 2" />
+                        <Badge status="warning" text={props.tags.warning} />
+                        <Popover placement="right" content={<TagForm />}  trigger="click" visible={props.popover.warning} onVisibleChange={() => props.handlePopover('warning', props.popover.warning)}>
+                            <Icon type="edit" className="tag-edit" />
+                        </Popover>
                     </Menu.Item>
                     <Menu.Item key="error">
-                        <Badge status="error" text="Tag 3" />
+                        <Badge status="error" text={props.tags.error} />
+                        <Popover placement="right" content={<TagForm />}  trigger="click" visible={props.popover.error} onVisibleChange={() => props.handlePopover('error', props.popover.error)}>
+                            <Icon type="edit" className="tag-edit" />
+                        </Popover>
                     </Menu.Item>
                 </SubMenu>
                 <SubMenu
@@ -73,6 +89,17 @@ const Nav = (props) => {
     );
 };
 
-export default connect(null, {
-    selectTag
+const mapStateToProps = state => {
+    return {
+        selectedTag: state.tags.selectTag,
+        tags: state.tags.tags,
+        popover: state.tags.popover
+    }
+}
+
+export default connect(mapStateToProps, {
+    selectTag,
+    fetchTags,
+    setTag,
+    handlePopover
 })(Nav);

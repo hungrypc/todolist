@@ -9,7 +9,10 @@ import {
     CREATE_TODO,
     SELECT_DATE,
     CHANGE_STATUS,
-    SELECT_TAG
+    SELECT_TAG,
+    FETCH_TAGS,
+    SET_TAG,
+    HANDLE_POPOVER
 } from './types';
 
 firebase.initializeApp({
@@ -23,6 +26,16 @@ const db = firebase.firestore();
 
 
 export const signIn = user => {
+    db.collection(user.uid).doc('tags').get()
+    .then((doc) => {
+        if (!doc.exists) {
+            db.collection(user.uid).doc('tags').set({
+                success: 'Tag 1',
+                warning: 'Tag 2',
+                error: 'Tag 3'
+            })
+        }
+    })
     return {
         type: SIGN_IN,
         payload: user
@@ -46,7 +59,7 @@ export const fetchTodos = (monthStart, monthEnd) => {
             .then(doc => {
                 let todoArr = [];
                 doc.forEach((todo) => {
-                    todoArr.push(Object.assign(todo.data(), {id: todo.id}))
+                    todoArr.push(Object.assign(todo.data(), { id: todo.id }))
                 })
                 dispatch({
                     type: FETCH_TODOS,
@@ -100,5 +113,41 @@ export const selectTag = tag => {
     return {
         type: SELECT_TAG,
         payload: tag
+    }
+};
+
+export const fetchTags = () => {
+    return async (dispatch) => {
+        await db
+            .collection(firebase.auth().currentUser.uid)
+            .doc('tags')
+            .get()
+            .then(doc => {
+                dispatch({
+                    type: FETCH_TAGS,
+                    payload: doc.data()
+                })
+            });
+    };
+};
+
+export const setTag = (tag) => {
+    db.collection(firebase.auth().currentUser.uid).doc('tags').update(tag)
+    return {
+        type: SET_TAG
+    }
+};
+
+export const handlePopover = (popType, popoverVisible) => {
+    let response;
+    if (popoverVisible) {
+        response = false
+    } else {
+        response = 'visible'
+    }
+    return {
+        type: HANDLE_POPOVER,
+        popType,
+        payload: response
     }
 };

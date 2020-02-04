@@ -184,6 +184,10 @@ body {
 .nav__menu {
   width: 256; }
 
+.tag-edit {
+  float: right;
+  margin-top: 1.4rem; }
+
 .main__sider {
   overflow: 'auto';
   height: '100vh';

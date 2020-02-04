@@ -208,7 +208,7 @@ const CalendarView = (props) => {
 const mapStateToProps = state => {
     return {
         org: state.todo.org,
-        tag: state.todo.tag
+        tag: state.tags.selectedTag
     }
 }
 
