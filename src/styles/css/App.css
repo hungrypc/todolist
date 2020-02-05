@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 /* this allows us to start clean */
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300&display=swap");
 *,
 *::after,
 *::before {
@@ -13,12 +15,12 @@ html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif; }
 
 .auth {
   height: 100vh;
   width: 100%;
-  font-family: 'Raleway', sans-serif;
   text-align: center; }
   .auth__header {
     font-size: 6rem;
@@ -52,22 +54,30 @@ body {
   .notes-month section {
     font-size: 28px; }
 
-.todo-calendar__list-container-todos {
-  height: 230px;
-  overflow: scroll; }
-
-.todo-calendar__drawer-description {
-  height: 10rem;
-  width: 21rem;
-  padding: 1.2rem;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-  margin-top: .5rem;
-  color: #8c8c8c; }
-
-.todo-calendar__drawer-checkbox {
-  width: 21rem;
-  margin-top: 2rem; }
+.todo-calendar {
+  position: relative; }
+  .todo-calendar__month-header {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: -5px;
+    left: 42%;
+    font-size: 3.3rem;
+    font-weight: 300;
+    letter-spacing: 4px; }
+  .todo-calendar__list-container-todos {
+    height: 230px;
+    overflow: scroll; }
+  .todo-calendar__drawer-description {
+    height: 10rem;
+    width: 21rem;
+    padding: 1.2rem;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    margin-top: .5rem;
+    color: #8c8c8c; }
+  .todo-calendar__drawer-checkbox {
+    width: 21rem;
+    margin-top: 2rem; }
 
 .drawer-notes {
   font-size: 1.3rem;
@@ -112,6 +122,14 @@ body {
 .ant-fullcalendar-fullscreen .ant-fullcalendar-date:hover {
   background: rgba(246, 247, 249, 0.5); }
 
+.ant-fullcalendar-header {
+  text-align: right; }
+  .ant-fullcalendar-header .ant-radio-group {
+    display: none !important; }
+
+.ant-select-selection {
+  border: none; }
+
 .todo-item {
   display: block;
   height: 4rem;
@@ -132,11 +150,14 @@ body {
     z-index: 9999; }
 
 .ant-drawer-title .ant-badge-status-text {
-  margin-left: 2rem;
-  font-size: 1.5rem; }
+  font-size: 1.6rem;
+  font-weight: 600; }
 
 .ant-drawer-body {
   padding: 1rem 2.4rem; }
+
+.ant-drawer-header {
+  padding: 16px 24px 5px 24px; }
 
 .pending {
   border: 1px solid #e8e8e8; }
@@ -165,20 +186,23 @@ body {
       top: -2rem;
       left: 9.7rem; }
 
+.radio-tag .ant-radio {
+  margin: 0 1rem; }
+
 .radio-tag-success .ant-radio .ant-radio-inner {
-  border-color: #52c41a; }
+  border-color: #66c7c7; }
   .radio-tag-success .ant-radio .ant-radio-inner::after {
-    background-color: #52c41a; }
+    background-color: #66c7c7; }
 
 .radio-tag-warning .ant-radio .ant-radio-inner {
-  border-color: #faad14; }
+  border-color: #6b60c8; }
   .radio-tag-warning .ant-radio .ant-radio-inner::after {
-    background-color: #faad14; }
+    background-color: #6b60c8; }
 
 .radio-tag-error .ant-radio .ant-radio-inner {
-  border-color: #f5222d; }
+  border-color: #e5605a; }
   .radio-tag-error .ant-radio .ant-radio-inner::after {
-    background-color: #f5222d; }
+    background-color: #e5605a; }
 
 .ant-form-item {
   margin-bottom: 0; }

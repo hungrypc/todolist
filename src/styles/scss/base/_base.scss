@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 /* this allows us to start clean */
 *,
 *::after,
@@ -15,4 +16,5 @@ html {
 
 body {
     box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
 }

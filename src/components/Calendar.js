@@ -72,16 +72,18 @@ const CalendarView = (props) => {
                                 return (
                                     <div className={item.type}>
                                         <li key={item.title}>
-                                            <Badge status={item.type} text={item.title}  />
+                                            <Badge status={item.type} text={item.title} />
                                         </li>
 
                                     </div>
                                 )
                             } else if (props.tag === item.type) {
                                 return (
-                                    <li key={item.title}>
-                                        <Badge status={item.type} text={item.title} />
-                                    </li>
+                                    <div className={item.type}>
+                                        <li key={item.title}>
+                                            <Badge status={item.type} text={item.title} />
+                                        </li>
+                                    </div>
                                 )
                             }
                         }
@@ -133,6 +135,7 @@ const CalendarView = (props) => {
 
     return (
         <div className="todo-calendar">
+            <div className="todo-calendar__month-header">{moment(props.calDate).format("MMMM")}</div>
             <Calendar
                 value={props.calDate}
                 dateCellRender={dateCellRender}

@@ -1,22 +1,26 @@
 .radio-tag {
+    .ant-radio {
+        margin: 0 1rem;
+    }
+
     &-success .ant-radio .ant-radio-inner {
-        border-color: #52c41a; 
+        border-color: #66c7c7; 
         &::after {
-            background-color: #52c41a;
+            background-color: #66c7c7;
         }
     }
 
     &-warning .ant-radio .ant-radio-inner {
-        border-color: #faad14; 
+        border-color: #6b60c8; 
         &::after {
-            background-color: #faad14;
+            background-color: #6b60c8;
         }
     }
 
     &-error .ant-radio .ant-radio-inner {
-        border-color: #f5222d; 
+        border-color: #e5605a; 
         &::after {
-            background-color: #f5222d;
+            background-color: #e5605a;
         }
     }
 }
