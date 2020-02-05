@@ -43,6 +43,8 @@ body {
     width: 100%;
     text-overflow: ellipsis;
     font-size: 12px; }
+  .events div:not(:last-child) {
+    margin-bottom: .5rem; }
 
 .notes-month {
   text-align: center;
@@ -77,7 +79,17 @@ body {
   .ant-modal-content {
     overflow: hidden; }
   .ant-modal-body {
-    padding: 24px 0; }
+    padding: 10px 0 20px 0; }
+  .ant-modal-header {
+    border-bottom: none;
+    padding: 30px 24px 0 50px;
+    font-weight: 100; }
+  .ant-modal-title {
+    font-weight: 300;
+    font-size: 17px; }
+
+.ant-drawer-header {
+  border-bottom: none; }
 
 .ant-badge-status-dot {
   height: 8px;
@@ -85,6 +97,20 @@ body {
 
 .ant-badge-status-text {
   font-size: 1.4rem; }
+
+.ant-fullcalendar-fullscreen .ant-fullcalendar-value {
+  font-size: 17px;
+  font-weight: 100; }
+
+.ant-fullcalendar-column-header .ant-fullcalendar-column-header-inner {
+  font-size: 17px;
+  font-weight: 100; }
+
+.ant-fullcalendar-fullscreen .ant-fullcalendar-selected-day .ant-fullcalendar-date {
+  background: rgba(246, 247, 249, 0.5); }
+
+.ant-fullcalendar-fullscreen .ant-fullcalendar-date:hover {
+  background: rgba(246, 247, 249, 0.5); }
 
 .todo-item {
   display: block;
@@ -159,6 +185,69 @@ body {
 
 .form-button {
   float: right; }
+
+.ant-badge-status-success {
+  background-color: #66c7c7; }
+
+.ant-badge-status-warning {
+  background-color: #6b60c8; }
+
+.ant-badge-status-error {
+  background-color: #e5605a; }
+
+#success {
+  background-color: #dff8f5;
+  border-color: #dff8f5; }
+  #success .ant-badge .ant-badge-status-text {
+    color: #66c7c7;
+    font-weight: 500; }
+
+#error {
+  background-color: #fbe6e7;
+  border-color: #fbe6e7; }
+  #error .ant-badge .ant-badge-status-text {
+    color: #e5605a;
+    font-weight: 500; }
+
+#warning {
+  background-color: #ecebfd;
+  border-color: #ecebfd; }
+  #warning .ant-badge .ant-badge-status-text {
+    color: #6b60c8;
+    font-weight: 500; }
+
+.warning {
+  padding: 0 .5rem;
+  border-radius: 5px;
+  background-color: #ecebfd;
+  border-color: #ecebfd; }
+  .warning .ant-badge {
+    vertical-align: middle; }
+    .warning .ant-badge .ant-badge-status-text {
+      color: #6b60c8;
+      font-weight: 500; }
+
+.error {
+  padding: 0 .5rem;
+  border-radius: 5px;
+  background-color: #fbe6e7;
+  border-color: #fbe6e7; }
+  .error .ant-badge {
+    vertical-align: middle; }
+    .error .ant-badge .ant-badge-status-text {
+      color: #e5605a;
+      font-weight: 500; }
+
+.success {
+  padding: 0 .5rem;
+  border-radius: 5px;
+  background-color: #dff8f5;
+  border-color: #dff8f5; }
+  .success .ant-badge {
+    vertical-align: middle; }
+    .success .ant-badge .ant-badge-status-text {
+      color: #66c7c7;
+      font-weight: 500; }
 
 .nav__user {
   display: flex;

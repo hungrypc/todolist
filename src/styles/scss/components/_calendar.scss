@@ -10,6 +10,12 @@
         text-overflow: ellipsis;
         font-size: 12px;
     }
+
+    div {
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
 }
 
 .notes-month {
@@ -59,8 +65,21 @@
 
     }
     &-body {
-        padding: 24px 0; 
+        padding: 10px 0 20px 0; 
     }
+    &-header {
+        border-bottom: none;
+        padding: 30px 24px 0 50px;
+        font-weight: 100;
+    }
+    &-title {
+        font-weight: 300;
+        font-size: 17px;
+    }
+}
+
+.ant-drawer-header {
+    border-bottom: none;
 }
 
 .ant-badge {
@@ -74,3 +93,30 @@
     }
 }
 
+.ant-fullcalendar-fullscreen .ant-fullcalendar-value {
+    font-size: 17px;
+    font-weight: 100;
+}
+
+.ant-fullcalendar-column-header .ant-fullcalendar-column-header-inner {
+    font-size: 17px;
+    font-weight: 100;
+}
+
+.ant-fullcalendar-fullscreen .ant-fullcalendar-selected-day {
+    .ant-fullcalendar-date {
+    background: rgba(246, 247, 249, 0.5);
+    }
+
+    // .ant-fullcalendar-value {
+    //     color: rgba(60, 79, 235, 1);
+    // }
+
+}
+.ant-fullcalendar-fullscreen .ant-fullcalendar-date:hover {
+    background: rgba(246, 247, 249, 0.5);
+}
+
+// .ant-fullcalendar-fullscreen .ant-fullcalendar-fullscreen .ant-fullcalendar-today .ant-fullcalendar-date {
+//     border-top-color: rgba(60, 79, 235, 1); 
+// }

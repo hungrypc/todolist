@@ -1,0 +1,90 @@
+.ant-badge-status {
+    &-success {
+        background-color: #66c7c7;
+        
+    }
+    &-warning {
+        background-color: #6b60c8;
+    }
+    &-error {
+        background-color: #e5605a;
+    }
+}
+
+#success {
+    background-color: rgba(223, 248, 245, 1);
+    border-color: rgba(223, 248, 245, 1);
+
+    .ant-badge .ant-badge-status-text {
+        color: #66c7c7;
+        font-weight: 500;
+    }
+}
+
+#error {
+    background-color: rgba(251, 230, 231, 1);
+    border-color: rgba(251, 230, 231, 1);
+
+    .ant-badge .ant-badge-status-text {
+        color: #e5605a;
+        font-weight: 500;
+    }
+}
+
+#warning {
+    background-color: rgba(236, 235, 253, 1);
+    border-color: rgba(236, 235, 253, 1);
+
+    .ant-badge .ant-badge-status-text {
+        color: #6b60c8;
+        font-weight: 500;
+    }
+}
+
+.warning {
+    padding: 0 .5rem;
+    border-radius: 5px;
+    background-color: rgba(236, 235, 253, 1);
+    border-color: rgba(236, 235, 253, 1);
+
+    .ant-badge {
+        vertical-align: middle;
+
+        .ant-badge-status-text {
+            color: #6b60c8;
+            font-weight: 500;
+        }
+    }
+}
+
+.error {
+    padding: 0 .5rem;
+    border-radius: 5px;
+    background-color: rgba(251, 230, 231, 1);
+    border-color: rgba(251, 230, 231, 1);
+
+    .ant-badge {
+        vertical-align: middle;
+
+        .ant-badge-status-text {
+            color: #e5605a;
+            font-weight: 500;
+        }
+    }
+}
+
+.success {
+    padding: 0 .5rem;
+    border-radius: 5px;
+    background-color: rgba(223, 248, 245, 1);
+    border-color: rgba(223, 248, 245, 1);
+
+    .ant-badge {
+        vertical-align: middle;
+
+        .ant-badge-status-text {
+            color: #66c7c7;
+            font-weight: 500;
+        }
+    }
+}

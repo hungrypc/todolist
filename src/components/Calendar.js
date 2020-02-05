@@ -70,9 +70,12 @@ const CalendarView = (props) => {
                         if (item.pending) {
                             if (props.tag === "all") {
                                 return (
-                                    <li key={item.title}>
-                                        <Badge status={item.type} text={item.title} />
-                                    </li>
+                                    <div className={item.type}>
+                                        <li key={item.title}>
+                                            <Badge status={item.type} text={item.title}  />
+                                        </li>
+
+                                    </div>
                                 )
                             } else if (props.tag === item.type) {
                                 return (
@@ -150,10 +153,10 @@ const CalendarView = (props) => {
                             getListData(props.calDate).map((todo) => {
                                 if (todo.pending) {
                                     return (
-                                        <Button key={todo.id} className="todo-item pending" type="default" onClick={() => showDrawer(todo)}>
+                                        <div key={todo.id} className="todo-item pending" id={todo.type} type="default" onClick={() => showDrawer(todo)}>
                                             <Badge status={todo.type} text={todo.title} />
                                             <Checkbox onChange={() => onCheckboxChange(todo)} className="todo-item-checkbox" />
-                                        </Button>
+                                        </div>
                                     )
                                 }
                             })}
