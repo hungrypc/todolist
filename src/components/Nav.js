@@ -15,7 +15,6 @@ const { SubMenu } = Menu;
 const Nav = (props) => {
 
     const handleClick = e => {
-        console.log('click ', e);
         props.selectTag(e.key);
     };
 

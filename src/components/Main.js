@@ -22,10 +22,9 @@ const Main = (props) => {
         props.selectDate(selectedDate)
     }
 
-    // FIX DATE SELECT VS MONTH SELECT HERE
     useEffect(() => {
         props.fetchTodos(monthStart, monthEnd)
-    }, [props.date])
+    }, [moment(props.date).month()])
 
     return (
         <div className="main">

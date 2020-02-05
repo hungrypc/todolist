@@ -72,6 +72,7 @@
 
 .ant-modal {
     width: 400px !important;
+    left: 6.5% !important;
 
     &-content {
     overflow: hidden;
@@ -144,6 +145,10 @@
 .ant-select{
     &-selection {
         border: none;
+        &:focus {
+            border: none;
+            box-shadow: none;
+        }
     }
 
 }

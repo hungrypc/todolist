@@ -70,8 +70,8 @@ const CalendarView = (props) => {
                         if (item.pending) {
                             if (props.tag === "all") {
                                 return (
-                                    <div className={item.type}>
-                                        <li key={item.title}>
+                                    <div className={item.type} key={item.title}>
+                                        <li>
                                             <Badge status={item.type} text={item.title} />
                                         </li>
 
@@ -79,8 +79,8 @@ const CalendarView = (props) => {
                                 )
                             } else if (props.tag === item.type) {
                                 return (
-                                    <div className={item.type}>
-                                        <li key={item.title}>
+                                    <div className={item.type} key={item.title}>
+                                        <li>
                                             <Badge status={item.type} text={item.title} />
                                         </li>
                                     </div>

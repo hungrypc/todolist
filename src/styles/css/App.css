@@ -85,7 +85,8 @@ body {
   margin-left: .5rem; }
 
 .ant-modal {
-  width: 400px !important; }
+  width: 400px !important;
+  left: 6.5% !important; }
   .ant-modal-content {
     overflow: hidden; }
   .ant-modal-body {
@@ -129,6 +130,9 @@ body {
 
 .ant-select-selection {
   border: none; }
+  .ant-select-selection:focus {
+    border: none;
+    box-shadow: none; }
 
 .todo-item {
   display: block;
@@ -314,7 +318,8 @@ body {
 .main__content-container {
   background: #fff;
   padding: 2.4rem;
-  height: 100%; }
+  height: 100%;
+  border-radius: 5px; }
 
 .main__footer {
   text-align: center; }
