@@ -93,21 +93,6 @@ const CalendarView = (props) => {
         );
     };
 
-    function getMonthData(value) {
-        // todo: total number of todos on month panel?
-        return null
-    };
-
-    function monthCellRender(value) {
-        const num = getMonthData(value);
-        return num ? (
-            <div className="notes-month">
-                <section>{num}</section>
-                <span>Backlog number</span>
-            </div>
-        ) : null;
-    };
-
     const onSelect = value => {
         props.getDate(value);
         setModalVisible(true);
@@ -139,7 +124,6 @@ const CalendarView = (props) => {
             <Calendar
                 value={props.calDate}
                 dateCellRender={dateCellRender}
-                monthCellRender={monthCellRender}
                 onSelect={onSelect}
                 onPanelChange={onPanelChange}
             />

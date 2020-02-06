@@ -55,12 +55,13 @@ body {
     font-size: 28px; }
 
 .todo-calendar {
-  position: relative; }
+  position: relative;
+  padding-top: 1rem; }
   .todo-calendar__month-header {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
     top: -5px;
-    left: 42%;
+    left: 1.5rem;
     font-size: 3.3rem;
     font-weight: 300;
     letter-spacing: 4px; }
