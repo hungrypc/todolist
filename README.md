@@ -10,7 +10,7 @@ npm start
 
 note: need own firebase key
 
-<!-- !["Gif of adding item"](https://github.com/hungrypc/tripper/blob/master/storage/dem.gif) -->
+!["Gif of app"](https://github.com/hungrypc/todolist/blob/master/images/todo-demo.gif)
 
 ## tech & main dependencies:
 - react
